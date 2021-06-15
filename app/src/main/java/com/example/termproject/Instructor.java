@@ -9,9 +9,9 @@ public class Instructor extends User {
         super(id, emailAddress, firstName, lastName, username, password);
     }
 
-    public Instructor(int id, String emailAddress, String firstName, String lastName, String username, String password, Course[] courses) {
+    public Instructor(int id, String emailAddress, String firstName, String lastName, String username, String password, boolean approved) {
         super(id, emailAddress, firstName, lastName, username, password);
-        this.courses = courses;
+        this.approved = approved;
     }
 
     public boolean isApproved() {
@@ -20,5 +20,13 @@ public class Instructor extends User {
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    public Course[] getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Course[] courses) {
+        this.courses = courses;
     }
 }

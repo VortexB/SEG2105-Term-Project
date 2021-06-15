@@ -2,14 +2,15 @@ package com.example.termproject;
 
 public class Course {
 
-    private int courseCode;
+    String courseCode;
     private String name;
     private int studentCapacity;
     private String courseDescription;
-    private CourseDate[] dates;
+    private String dates;
     private Instructor instructor;
 
-    public Course(int courseCode, String name, int studentCapacity, String courseDescription, CourseDate[] dates, Instructor instructor) {
+
+    public Course(String courseCode, String name, int studentCapacity, String courseDescription, String dates, Instructor instructor) {
         this.courseCode = courseCode;
         this.name = name;
         this.studentCapacity = studentCapacity;
@@ -18,11 +19,16 @@ public class Course {
         this.instructor = instructor;
     }
 
-    public int getCourseCode() {
+    public Course(String courseCode, String name) {
+        this.courseCode = courseCode;
+        this.name = name;
+    }
+
+    public String getCourseCode() {
         return courseCode;
     }
 
-    public void setCourseCode(int courseCode) {
+    public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
     }
 
@@ -50,11 +56,11 @@ public class Course {
         this.courseDescription = courseDescription;
     }
 
-    public CourseDate[] getDates() {
+    public String getDates() {
         return dates;
     }
 
-    public void setDates(CourseDate[] dates) {
+    public void setDates(String dates) {
         this.dates = dates;
     }
 

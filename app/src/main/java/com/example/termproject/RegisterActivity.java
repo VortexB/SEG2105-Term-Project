@@ -39,22 +39,27 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createUser(View view){
-        DBHandler dbHandler = new DBHandler(this);
+        DBHandler dbHandler = new DBHandler(this);//TODO: maybe add check that user isn't in a different table
         String fn = firstname.getText().toString();
         String ln = lastname.getText().toString();
         String un = username.getText().toString();
         String eml = email.getText().toString();
         String pw = password1.getText().toString();
-        if(fn.chars().allMatch(Character::isAlphabetic)){
+        if(fn.length()==0||ln.length()==0||un.length()==0||eml.length()==0||pw.length()==0){
+            logger.setText("No field may be empty");
+            return;
+        }
+        if(!fn.chars().allMatch(Character::isAlphabetic)){
             logger.setText("First Name must only contain letters");
             return;
         }
-        if(ln.chars().allMatch(Character::isAlphabetic)){
+        if(!ln.chars().allMatch(Character::isAlphabetic)){
             logger.setText("Last Name must only contain letters");
             return;
         }
         if(un.length()<3){
             logger.setText("Username must be over 2 characters");
+            return;
         }
         if(!eml.contains("@")){
             logger.setText("Invalid Email");
@@ -64,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
             logger.setText("Passwords do not match");
             return;
         }
-        User user = new User(-1,fn,ln,un,eml,pw);
+        User user = new User(-1,eml,fn,ln,un,pw);
         boolean result=false;
         switch (radioGroup.getCheckedRadioButtonId()){
             case(R.id.radioButtonStudent_Register):
