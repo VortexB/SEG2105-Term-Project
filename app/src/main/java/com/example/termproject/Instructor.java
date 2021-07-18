@@ -29,4 +29,9 @@ public class Instructor extends User {
     public void setCourses(Course[] courses) {
         this.courses = courses;
     }
+
+    public static Instructor fromUser(User user){
+        if(user==null) return null;
+        return new Instructor(user.getId(), user.getEmailAddress(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword());
+    }
 }

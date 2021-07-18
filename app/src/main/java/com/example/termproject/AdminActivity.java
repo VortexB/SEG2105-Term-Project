@@ -96,7 +96,7 @@ public class AdminActivity extends AppCompatActivity {
     }
     void loadCourses(){
         DBHandler dbHandler = new DBHandler(this);
-        ArrayList<Course> courses = dbHandler.getCourses();
+        ArrayList<Course> courses = dbHandler.getCoursesInstructor();
         ArrayList<String> codes = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
         for(Course c : courses){

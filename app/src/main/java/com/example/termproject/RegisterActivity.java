@@ -49,19 +49,19 @@ public class RegisterActivity extends AppCompatActivity {
             logger.setText("No field may be empty");
             return;
         }
-        if(!fn.chars().allMatch(Character::isAlphabetic)){
+        if(!onlyAlpha(fn)){
             logger.setText("First Name must only contain letters");
             return;
         }
-        if(!ln.chars().allMatch(Character::isAlphabetic)){
+        if(!onlyAlpha(ln)){
             logger.setText("Last Name must only contain letters");
             return;
         }
-        if(un.length()<3){
+        if(!validUsername(un)){
             logger.setText("Username must be over 2 characters");
             return;
         }
-        if(!eml.contains("@")){
+        if(!validEmail(eml)){
             logger.setText("Invalid Email");
             return;
         }
@@ -93,6 +93,17 @@ public class RegisterActivity extends AppCompatActivity {
     public void openLoginActivity(){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
+    }
+
+    public static boolean onlyAlpha(String string){
+        return string.chars().allMatch(Character::isAlphabetic);
+    }
+
+    public static boolean validEmail(String string){
+        return string.contains("@");
+    }
+    public static boolean validUsername(String string){
+        return string.length()>3;
     }
 
 }

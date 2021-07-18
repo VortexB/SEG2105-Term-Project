@@ -71,4 +71,24 @@ public class Course {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
+
+
+    public String getDays(){
+        if(dates!=null) {
+            String[] spiltDates_Days_Times = dates.split("/");
+            if (spiltDates_Days_Times.length > 1) {
+                return spiltDates_Days_Times[0];
+            }
+        }
+        return null;
+    }
+    public String getTimes(){
+        if(dates!=null) {
+            String[] spiltDates_Days_Times = dates.split("/");
+            if (spiltDates_Days_Times.length > 1) {
+                return spiltDates_Days_Times[1];
+            }
+        }
+        return null;
+    }
 }

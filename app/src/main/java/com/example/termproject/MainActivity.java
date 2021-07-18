@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         }
         user = dbHandler.findUser(username.getText().toString(),dbHandler.TABLE_INSTRUCTOR);
         if(user!=null){
+            if(!dbHandler.isApproved(username.getText().toString())){
+                logger.setText("User Not Approved; Get Admin to Approve You");
+                return;
+
+            }
             if(user.getPassword().equals(password.getText().toString())){
                 Intent intent = new Intent(this,ActivityInstructor.class);
                 intent.putExtra(INTENT_LOGIN_USERNAME,username.getText().toString());
