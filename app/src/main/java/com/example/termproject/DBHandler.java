@@ -429,7 +429,7 @@ public class DBHandler extends SQLiteOpenHelper{
         return true;
     }
     //dates should be formatted Day1,Day2/Time1Start:Time1End,Time2Start:Time2End
-    public boolean timeConflict(String date1,String date2){ //absolutely disgusting code pls i want to go to bed
+    public static boolean timeConflict(String date1,String date2){ //absolutely disgusting code pls i want to go to bed
         for(String day1:date1.split("/")[0].split(",")){
             for(String day2:date2.split("/")[0].split(",")){
                 if(day1.equals(day2)){
@@ -446,6 +446,16 @@ public class DBHandler extends SQLiteOpenHelper{
                     }
                 }
             }
+        }
+        return true;
+    }
+    public static boolean validDate(String date){
+        try{
+            if(date.split("/").length!=2)return false;
+            if(!date.split("/")[1].split(",")[0].contains("-")) return false;
+            if(!date.split("/")[1].split(",")[0].contains(":")) return false;
+        }catch (Exception e){
+            return false;
         }
         return true;
     }
