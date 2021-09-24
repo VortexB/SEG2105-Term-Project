@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="Application"
+        android:text="Course Manager"
         android:textAlignment="center"
         android:textColor="#232121"
         android:textSize="34sp"
